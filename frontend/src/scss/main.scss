@@ -1,0 +1,942 @@
+@use "sass:color";
+
+
+//********* COULEURS *********
+// 1. Nuances brutes (Source unique de vérité, agnostique)
+$teinte-1: #e04c00; // Pastille 1
+$teinte-2: #fceb00; // Pastille 2
+$teinte-3: #23a1b4; // Pastille 3
+$teinte-4: #f59200; // Pastille 4
+$teinte-5: #91c824; // Pastille 5
+$teinte-6: #40a87a; // Pastille 6
+$teinte-7: #f8f6f0; // Pastille 7
+$teinte-8: #000000; // Pastille 8
+
+$texte: #333;
+
+// 2. Variables d'harmonie / structurelles
+$couleur-principale: $teinte-1;
+$accent-clair: $teinte-3;
+$accent-fonce: $teinte-4;
+$teintes-claires: $teinte-7;
+$teintes-foncees: $teinte-8;
+
+// Couleurs contextuelles
+$danger-couleur: #d90429;
+$success-couleur: $teinte-6;
+$warning-couleur: $teinte-2;
+
+// Fond et corps
+$body-bg-couleur: #ffffff;
+
+//********* POLICES *********
+// Titres
+$police-titres: "Roboto", sans-serif;
+$police-titres-interligne: 1.2;
+
+// Texte courant
+$police-texte-courant: "Roboto", sans-serif;
+$police-texte-courant-taille-base: 1.2rem;
+$police-texte-courant-interligne: 1.2;
+
+// Tailles titres
+$h1-taille: 3.25rem; // ~52px au lieu de 5rem
+$h2-taille: 2.5rem; // ~40px au lieu de 4rem
+$h3-taille: 1.75rem; // ~28px au lieu de 3rem
+$h4-taille: 1.35rem; // ~22px au lieu de 2.25rem
+$h5-taille: 1.1rem; // ~18px au lieu de 1.75rem
+$h6-taille: 1rem; // ~16px au lieu de 1.35rem;
+
+//********* IMPORTATION & CONFIGURATION BOOTSTRAP *********
+
+@use "bootstrap/scss/bootstrap" with ( // Couleurs
+  $primary: $couleur-principale,
+  $secondary: $accent-fonce,
+  $info: $accent-clair,
+  $danger: $danger-couleur,
+  $success: $success-couleur,
+  $warning: $warning-couleur,
+  $light: $teintes-claires,
+  $dark: $teintes-foncees,
+
+  // Fond et Texte
+  $body-bg: $body-bg-couleur,
+  $body-color: $teintes-foncees,
+  //$component-active-color: #fff,
+
+  // Bordures
+  $nav-pills-border-radius: 5px,
+  $btn-border-radius: 5px,
+  $btn-border-radius-sm: 5px,
+  $btn-border-radius-lg: 5px,
+  $card-border-radius: 2rem,
+  $headings-font-family: $police-titres,
+  $headings-font-weight: 900,
+  $headings-line-height: $police-titres-interligne,
+  $h1-font-size: $h1-taille,
+  $h2-font-size: $h2-taille,
+  $h3-font-size: $h3-taille,
+  $h4-font-size: $h4-taille,
+  $h5-font-size: $h5-taille,
+  $h6-font-size: $h6-taille,
+  $font-family-base: $police-texte-courant,
+  $font-size-base: $police-texte-courant-taille-base,
+  $line-height-base: $police-texte-courant-interligne);
+
+
+
+:root {
+  --h-courbe-hero: min(calc(100vw * 594.67 / 1920), 420px);
+  --h-courbe-bande: min(calc(100vw * 194.67 / 1920), 140px);
+  --chevauchement: calc(var(--h-courbe-bande) * 0.6); // une seule définition, partagée
+}
+
+
+
+//ICONES
+%icone {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.125em; // même alignement que Bootstrap Icons
+}
+
+.icone-nb {
+  @extend %icone;
+  background-color: currentColor; // l'icône hérite de la couleur du texte
+  -webkit-mask: var(--icone) no-repeat center / contain;
+  mask: var(--icone) no-repeat center / contain;
+}
+
+.icone-couleur {
+  @extend %icone;
+  background: var(--icone) no-repeat center / contain;
+}
+
+.icon-box {
+  background-color: $body-bg-couleur; // Fond blanc #ffffff
+  color: $teintes-foncees; // Icône noire $teinte-8
+  width: 1.7em;
+  height: 1.7em;
+  min-width: 55px;
+  border-radius: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 3.5em;
+  margin-right: 1.25rem;
+}
+
+.icone-fleche {
+  --icone: url('../assets/img/icones/fleche.svg');
+}
+
+// Accueil
+.icone-accueillir {
+  --icone: url('../assets/img/icones/accueillir.svg');
+}
+
+.icone-soutenir {
+  --icone: url('../assets/img/icones/soutenir.svg');
+}
+
+.icone-devenir {
+  --icone: url('../assets/img/icones/devenir.svg');
+}
+
+// Une ligne par icône
+.icone-ballon {
+  --icone: url('../assets/img/icones/ballon.svg');
+}
+
+.icone-livre {
+  --icone: url('../assets/img/icones/livre.svg');
+}
+
+.icone-maison {
+  --icone: url('../assets/img/icones/maison.svg');
+}
+
+.icone-musique {
+  --icone: url('../assets/img/icones/musique.svg');
+}
+
+.icone-reunion {
+  --icone: url('../assets/img/icones/journee_pedagogique.svg');
+}
+
+.icone-pomme {
+  --icone: url('../assets/img/icones/pomme.svg');
+}
+
+.icone-sac {
+  --icone: url('../assets/img/icones/sac.svg');
+}
+
+.icone-facebook {
+  --icone: url('../assets/img/icones/facebook.svg');
+}
+
+.icone-mail {
+  --icone: url('../assets/img/icones/mail.svg');
+}
+
+// ICONES DONS
+.icone-don-argent {
+  --icone: url('../assets/img/icones/don_argent.svg');
+}
+
+.icone-don-commemoratif {
+  --icone: url('../assets/img/icones/don_commemoratif.svg');
+}
+
+.icone-don-expertise {
+  --icone: url('../assets/img/icones/don_expertise.svg');
+}
+
+.icone-don-materiel {
+  --icone: url('../assets/img/icones/don_materiel.svg');
+}
+
+.icone-don-argent {
+  --icone: url('../assets/img/icones/don_argent.svg');
+}
+
+.icone-don-planifier {
+  --icone: url('../assets/img/icones/don_planifier.svg');
+}
+
+.icone-don-ponctuel {
+  --icone: url('../assets/img/icones/don_ponctuel.svg');
+}
+
+.icone-don-temps {
+  --icone: url('../assets/img/icones/don_temps.svg');
+}
+
+.icone-don-mensuel {
+  --icone: url('../assets/img/icones/don-mensuel.svg');
+}
+
+
+// LOGOS
+.logo-donateur {
+  --echelle: 1.25; // 1 = taille de la maquette; essaie 1.2 ou 1.3 si c'est trop petit
+  width: calc(var(--w) * var(--echelle));
+  max-width: 100%; // ne déborde jamais de la carte sur petit écran
+  height: auto;
+  object-fit: contain;
+}
+
+
+main {
+  overflow-x: clip; // coupe le débordement horizontal sans créer de contexte de défilement
+}
+
+// Polices chargées via <link> dans index.html
+
+// Vos styles personnalisés ci-dessous
+.navbar-nav {
+  .nav-link {
+    padding-inline: 1.25rem;
+    padding-block: 0.5rem;
+    color: $teintes-claires;
+    /* Garde le texte des autres liens bien blanc */
+
+    // Correction du comportement au survol et de l'onglet actif
+    &:hover,
+    &.active {
+      background-color: $teintes-claires !important;
+      color: black !important;
+    }
+  }
+}
+
+#section-donateurs {
+  .card {
+    max-width: 900px;
+    margin: 0 auto; // centre la carte horizontalement
+  }
+}
+
+#section-equipe {
+  .card-img-top {
+    max-height: 200px;
+    object-fit: cover;
+    object-position: center center;
+  }
+
+  .card-text {
+    font-size: .8em;
+  }
+}
+
+.cadre-soleil {
+  --largeur-soleil: 28%; // un peu plus large (le texte se décale d'autant)
+
+  @extend .card;
+  @extend .shadow;
+  @extend .border-0;
+  @extend .bg-primary;
+  position: relative;
+  overflow: hidden;
+  padding-top: 0;
+  padding-bottom: 6rem; // mobile : laisse la place au soleil sous le bouton
+
+  // Mobile : soleil en bas à gauche, coupé en bas et à gauche
+  &::before {
+    content: '';
+    position: absolute;
+    top: auto; // important : annule tout top hérité
+    bottom: -3rem;
+    left: -2.5rem;
+    right: auto;
+    width: 11rem;
+    height: 11rem;
+    background-image: url('../assets/img/component/soleil_orange.svg');
+    background-repeat: no-repeat;
+    background-position: left top;
+    background-size: contain;
+    pointer-events: none;
+  }
+
+  @media (min-width: 768px) {
+    padding-left: var(--largeur-soleil);
+    padding-bottom: 1em;
+
+    &::before {
+      top: 7rem;
+      bottom: auto;
+      left: -3rem;
+      right: auto;
+      width: calc(var(--largeur-soleil) + 3rem);
+      height: 100%;
+      background-size: contain;
+      background-position: left top;
+    }
+  }
+
+  .card-body {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+.section-note {
+  color: gray;
+}
+
+footer {
+
+  a.social-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.0rem;
+    height: 2.0rem;
+
+    color: black;
+    font-size: 2rem;
+    transition: color 1s;
+
+    // Quand on survole le lien (.social-icon), on cible spécifiquement l'icône à l'intérieur
+    &:hover {
+      .icone-couleur {
+        color: $couleur-principale;
+      }
+    }
+
+  }
+}
+
+
+
+//*** HERO
+%hero {
+
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+
+  display: flex;
+  align-items: center;
+  background-size: cover;
+  background-position: center 30%;
+  background-repeat: no-repeat;
+
+  --h-courbe: min(calc(100vw * 594.67 / 1920), 420px);
+  --air-sous-texte: 4rem; // espace garanti entre le bouton et la courbe
+
+  min-height: max(32rem, calc(var(--h-courbe) * 1.3));
+  padding-top: 2rem;
+  padding-bottom: calc(var(--h-courbe) * 0.4 + var(--air-sous-texte));
+  -webkit-mask: url('../assets/img/component/fond-courbe-orange-bottom.svg') no-repeat bottom center / 100% auto,
+    linear-gradient(#000, #000) no-repeat top / 100% calc(100% - var(--h-courbe) + 8px);
+  mask: url('../assets/img/component/fond-courbe-orange-bottom.svg') no-repeat bottom center / 100% auto,
+    linear-gradient(#000, #000) no-repeat top / 100% calc(100% - var(--h-courbe) + 8px);
+
+  @media (max-width: 767.98px) {
+    background-color: rgba(60, 30, 10, 0.85); // brun foncé semi-transparent
+    background-blend-mode: multiply;
+  }
+
+}
+
+.hero1 {
+  @extend %hero;
+  background-image: url('../assets/img/photos/hero-01.jpg');
+}
+
+.hero2 {
+  @extend %hero;
+  background-image: url('../assets/img/photos/hero-02.jpg');
+}
+
+.hero3 {
+  @extend %hero;
+  background-image: url('../assets/img/photos/hero-03.jpg');
+}
+
+.hero4 {
+  @extend %hero;
+  background-image: url('../assets/img/photos/hero-04.jpg');
+}
+
+.section-apres-hero {
+  position: relative;
+  z-index: 1;
+  margin-top: calc(-1 * var(--h-courbe-hero) * 0.3);
+  padding-top: calc(var(--h-courbe-hero) * 0.25); // espace sous la courbe, avant le titre
+}
+
+.section-sous-precedente {
+  position: relative;
+  z-index: -1;
+  margin-top: calc(-1 * 100vw * 594.67 / 1920 * 0.45); // monte de 0.3 à 0.45, à ajuster
+
+}
+
+//####################### FORMULAIRE ######################
+form {
+  textarea {
+    height: 10rem;
+  }
+
+}
+
+// À placer en dehors de form { }, directement au niveau racine du SCSS
+.form-control,
+.form-select,
+.form-check-input {
+  // Bordure blanche semi-transparente parfaite pour le fond orange
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  background-color: #fff;
+
+  &:focus {
+    border-color: $couleur-principale;
+    box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.3);
+  }
+}
+
+// Optionnel : personnaliser l'état coché de la checkbox pour qu'il ressorte bien
+.form-check-input:checked {
+  background-color: $couleur-principale;
+  border-color: #fff;
+}
+
+//####################### COMPOSANTS ######################
+
+//*** Image aux coins arrondis ***
+/* Conteneur de l'image principale */
+.custom-rounded-image {
+  border-radius: 80px 0px 0px 80px;
+}
+
+/* Positionnement de votre forme orange */
+.shape-top-right {
+  position: absolute;
+  top: 0;
+  right: 5%;
+  width: 50px;
+  /* Ajustez la largeur selon votre fichier */
+  height: auto;
+}
+
+/* Positionnement de votre forme jaune */
+.shape-bottom-left {
+  position: absolute;
+  bottom: 0;
+  left: 5%;
+  width: 80px;
+  /* Ajustez la largeur selon votre fichier */
+  height: auto;
+}
+
+/* Encadré*/
+.encadre-pale {
+  @extend .shadow;
+  @extend .p-4;
+  @extend .mb-5;
+  @extend .bg-body-tertiary;
+  @extend .rounded-4;
+  @extend .text-secondary;
+  @extend .text-dark;
+  line-height: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  p {
+    margin: 0px;
+  }
+}
+
+/* Accordéons*/
+
+/* Personnalisation générale de l'accordéon */
+.custom-orange-accordion {
+
+  .accordion-item {
+    border: none;
+    margin-bottom: 1.5rem; // Conserve l'espacement entre les blocs
+    background-color: transparent;
+  }
+
+  .accordion-button {
+    background-color: $couleur-principale !important; // Utilise votre $teinte-1 (#e44d04)
+    color: $body-bg-couleur !important; // Utilise votre #ffffff
+    // padding: 2rem 1.5rem;
+    border-radius: 12px !important;
+    display: flex;
+    align-items: center;
+    box-shadow: none !important;
+
+    // Flèche native Bootstrap passée en blanc actif
+    &::after {
+      filter: brightness(0) invert(1);
+      background-size: 1.25rem;
+    }
+  }
+
+  // Conteneur de la grosse icône blanche
+  .accordion-icon-box {
+    flex: 0 0 auto; // ne rétrécit jamais, ne grandit jamais
+
+    min-width: 4.5rem;
+
+    background-color: $body-bg-couleur; // Fond blanc #ffffff
+    color: $teintes-foncees; // Icône noire $teinte-8
+    width: 1.3em;
+    height: 1.4em;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 3em;
+    margin-right: 1.25rem;
+  }
+
+  // Structure des textes (Titre + Badge)
+  .accordion-header-content {
+    display: flex;
+    flex-direction: row; // au lieu de column
+    flex-wrap: wrap; // l'heure passe dessous si l'écran est trop étroit
+    align-items: center;
+    column-gap: 0.75rem;
+    row-gap: 0.25rem;
+    flex: 1 1 auto;
+    min-width: 0;
+    font-family: $police-titres;
+  }
+
+  .accordion-header-title {
+    flex: 0 0 100%; // le titre garde sa propre ligne
+    line-height: $police-titres-interligne;
+    margin-bottom: 0.25rem;
+  }
+
+  // Style des badges d'horaires à l'intérieur du bouton
+  .accordion-header-badge {
+    background-color: $body-bg-couleur;
+    color: $teintes-foncees;
+    font-family: $police-texte-courant;
+    font-weight: 700;
+    font-size: 1.125rem;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    width: fit-content;
+
+    // Texte secondaire pour les heures (ex: "15h30 à 17h00")
+    .text-muted {
+      font-weight: 400;
+      color: color.adjust($texte, $lightness: 40%) !important; // Génère dynamiquement un gris propre à partir de votre noir
+    }
+  }
+
+  // Corps de l'accordéon (Contenu textuel déroulé)
+  .accordion-body {
+    background-color: $teintes-claires; // Utilise votre fond beige/blanc cassé $teinte-7
+    border: 1px solid color.adjust($teintes-claires, $lightness: -5%); // Bordure subtile assortie au fond
+    border-top: none;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    padding: 1.5rem;
+    font-family: $police-texte-courant;
+    font-size: $police-texte-courant-taille-base;
+    line-height: $police-texte-courant-interligne;
+    color: $teintes-foncees;
+  }
+}
+
+
+
+//####################### FONDS ######################
+// Forcer texte pâle sur tous les fonds primary
+.bg-primary,
+.btn-primary {
+  color: $teintes-claires;
+}
+
+
+
+
+.fond-courbe-orange-top {
+  background-image: url('../assets/img/component/fond-courbe-orange-top.png');
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: 100% auto;
+  padding-top: 8rem;
+}
+
+.fond-courbe-grise-bottom {
+  background-image: url('../assets/img/component/fond-coube-grise-soleil-pied.png');
+  background-repeat: no-repeat;
+  background-position: bottom left;
+  background-size: 100% auto;
+}
+
+%fond-barre-grise-base {
+  position: relative;
+  width: calc(100% + 8vw); // 100% du parent + 8vw qui dépassent à droite
+  left: 0; // ancré à gauche, plus de centrage
+  transform: none;
+  min-height: 400px;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.05);
+    /* Gris très léger visible sur fond blanc */
+    -webkit-mask: url('../assets/img/component/fond-barre-grise.svg') no-repeat center / cover;
+    mask: url('../assets/img/component/fond-barre-grise.svg') no-repeat center / cover;
+    pointer-events: none;
+  }
+
+  >.container {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+.fond-barre-grise-orange {
+  @extend %fond-barre-grise-base;
+
+  &::before {
+    background-color: rgba(255, 255, 255, 0.18); // Blanc transparent pour fond orange
+  }
+}
+
+// 3. Variante pour le fond blanc (utilise @extend)
+.fond-barre-grise-blanc {
+  @extend %fond-barre-grise-base;
+
+  &::before {
+    background-color: rgba(0, 0, 0, 0.05); // Noir/gris transparent pour fond blanc
+  }
+}
+
+// .fond-courbe-blanc-top {
+//   background-image: url('../assets/img/fond-courbe-blanc-top.png');
+//   @extend .bg-primary;
+//   background-repeat: no-repeat;
+//   background-position: bottom left;
+//   min-height: 400px;
+// }
+.bg-soleil-gris {
+  --largeur-soleil: clamp(160px, 38vw, 650px);
+  overflow: clip;
+  min-height: calc(var(--largeur-soleil) * 0.7);
+
+  pointer-events: none;
+
+  a,
+  button {
+    pointer-events: auto;
+  }
+
+  position: relative;
+  z-index: auto;
+  background: none;
+
+  --remontee: 8vw;
+  margin-top: calc(-1 * var(--remontee));
+  padding-top: calc(var(--remontee) + 1.5rem);
+  padding-bottom: 3rem;
+
+  &::before {
+    content: '';
+    position: absolute;
+    right: 2rem;
+    bottom: calc(var(--largeur-soleil) / -3);
+
+    width: var(--largeur-soleil);
+    aspect-ratio: 1 / 1;
+    z-index: -2;
+    background: url('../assets/img/component/soleil-gris.svg') no-repeat center / contain;
+    pointer-events: none;
+  }
+}
+
+
+//####################### SUPERPOSITION ######################
+
+
+#section-notre-mission {
+  .mt-n4rem {
+    margin-top: -4rem;
+  }
+
+  .photo-groupe {
+    height: 650px;
+    max-height: 1200px;
+    @extend .img-fluid;
+    @extend .w-100;
+    @extend .d-block;
+    object-fit: cover;
+    object-position: center center;
+  }
+}
+
+/* Forme qui déborde sous le bas de son conteneur */
+.shape-bottom-overflow {
+  bottom: -2.5rem;
+}
+
+// Masque vectoriel
+.section-vague-top-right {
+  // padding-top: 4rem;
+  clip-path: url(#decoupage-vague-top-right);
+  width: 100%;
+  min-height: 100px;
+  max-height: 900px; // plafond sur grand écran
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    max-height: 600px;
+    object-fit: cover; // la photo se recadre au lieu de s'étirer
+    object-position: center top; // garde les visages dans le cadre
+  }
+}
+
+.section-chevauchement {
+  position: relative;
+  z-index: 2;
+  margin-bottom: calc(-1 * var(--chevauchement));
+}
+
+.section-fond-courbe-blanche-haut-bas {
+  --couleur-fond: var(--bs-primary);
+  --couleur-page: #fff;
+  --padding-haut: 0.5rem;
+  --h-courbe: var(--h-courbe-bande);
+  --padding-section: 3rem;
+
+  position: relative;
+  z-index: 0;
+  padding-top: calc(var(--h-courbe) + var(--chevauchement) + var(--padding-haut));
+  padding-bottom: calc(var(--h-courbe) + var(--padding-section));
+
+
+
+  // aplat : couvre le haut ET le milieu (la bande du bas est gérée par ::after)
+  background-image: linear-gradient(var(--couleur-fond), var(--couleur-fond));
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-size: 100% calc(100% - var(--h-courbe) + 2px);
+
+  // haut : blanc de la page, découpé par la courbe, miroir horizontal
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -1px;
+    height: calc(var(--h-courbe) + 1px);
+    background: var(--couleur-page);
+    -webkit-mask: url('../assets/img/component/courbe-bande.svg') no-repeat center / 100% 100%;
+    mask: url('../assets/img/component/courbe-bande.svg') no-repeat center / 100% 100%;
+    transform: scaleX(-1);
+  }
+
+  // bas : courbe à gauche (inchangé)
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: var(--h-courbe);
+    background: var(--couleur-fond);
+    -webkit-mask: url('../assets/img/component/courbe-bande.svg') no-repeat center / 100% 100%;
+    mask: url('../assets/img/component/courbe-bande.svg') no-repeat center / 100% 100%;
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+  }
+
+  &.courbe-gris {
+    --couleur-fond: var(--bs-gray-200); // ton gris
+  }
+}
+
+.section-fond-courbe-blanche-bas {
+  --couleur-fond: var(--bs-primary);
+  // --h-courbe: calc(100vw * 194.67 / 1920);
+  --h-courbe: var(--h-courbe-bande);
+  --padding-section: 2rem; // marge d'air entre le formulaire et la courbe
+
+
+
+  position: relative;
+  z-index: 1;
+  padding-bottom: calc(var(--h-courbe) + var(--padding-section)) !important;
+
+
+  // aplat : tout sauf la bande de la courbe
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 calc(var(--h-courbe) - 2px) 0;
+    background: var(--couleur-fond);
+  }
+
+  // bande avec la courbe
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: var(--h-courbe);
+    background: var(--couleur-fond);
+    -webkit-mask: url('../assets/img/component/courbe-bande.svg') no-repeat center / 100% 100%;
+    mask: url('../assets/img/component/courbe-bande.svg') no-repeat center / 100% 100%;
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+.section-fond-courbe-blanche-bas.courbe-inverse {
+  background-color: var(--couleur-fond); // la section entière est colorée
+
+  &::before {
+    display: none;
+  }
+}
+
+
+// .section-fond-courbe-blanche-bas.courbe-inverse {
+//   background-color: var(--couleur-fond); // la section entière est colorée
+
+//   &::before {
+//     display: none;
+//   }
+
+//   // plus d'aplat séparé
+
+//   .courbe-bas {
+//     bottom: -1px;
+//     fill: #fff; // la courbe est blanche
+//   }
+// }
+
+.courbe-gris {
+  --couleur-fond: #eeeeee;
+}
+
+
+.courbe-jaune {
+  --couleur-fond: #{$teinte-4};
+  min-height: calc(var(--h-courbe) + 6rem);
+}
+
+.courbe-inverse-gris {
+  --couleur-fond: #eeeeee;
+}
+
+.courbe-primary {
+  --couleur-fond: var(--bs-primary);
+}
+
+.courbe-secondary {
+  --couleur-fond: var(--bs-secondary);
+}
+
+.courbe-dark {
+  --couleur-fond: var(--bs-dark);
+}
+
+.courbe-light {
+  --couleur-fond: var(--bs-light);
+}
+
+.courbe-white {
+  --couleur-fond: var(--bs-white);
+}
+
+.bg-gris {
+  background-color: #eeeeee; // ajuste selon la maquette
+}
+
+.card-superposee {
+  @extend .text-white;
+  @extend .rounded-4;
+  @extend .shadow;
+
+  margin-bottom: -150px;
+
+  @extend .mx-auto;
+
+  width: 90%;
+  max-width: 800px;
+  position: relative;
+  z-index: 10;
+
+}
+
+
+
+//####################### BORDURES ######################
+.border-bottom-thick {
+  border-bottom-width: 1rem !important;
+}
+
+//Carousel
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(1) sepia(1) saturate(10) hue-rotate(335deg);
+}
+
+section #donCarousel.carousel {
+  max-width: 900px;
+  margin-inline: auto;
+}
