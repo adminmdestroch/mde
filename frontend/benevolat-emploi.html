@@ -48,163 +48,181 @@
                 <div class="card border-0 rounded-4 shadow overflow-hidden">
 
                     <!-- 1. Partie supérieure : En-tête orange (bg-primary) -->
-                    <div class="bg-primary p-4 p-md-5">
-                        <h2 class="fw-normal mb-4 text-white">Devenir bénévole</h2>
+                    <div class="bg-primary">
 
                         <form action="/api/send-benevole" method="post" aria-label="Devenir bénévole">
-                            <!-- Champs texte standards -->
-                            <div class="mb-3">
-                                <label for="nom" class="visually-hidden">Nom :</label>
-                                <input id="nom" name="benevole-nom" type="text" class="form-control rounded-3 border-0"
-                                    placeholder="Nom complet*" required>
-                            </div>
+                            <!-- Section des champs de formulaire -->
+                            <div class="p-4 md-5">
+                                <h2 class="fw-normal mb-4 text-white">Devenir bénévole</h2>
 
-                            <div class="mb-3">
-                                <label for="courriel" class="visually-hidden">Courriel :</label>
-                                <input id="courriel" name="benevole-courriel" type="email"
-                                    class="form-control rounded-3 border-0" placeholder="Adresse courriel*" required>
-                            </div>
 
-                            <div class="mb-4">
-                                <label for="telephone" class="visually-hidden">Téléphone :</label>
-                                <input id="telephone" name="benevole-telephone" type="tel"
-                                    class="form-control rounded-3 border-0" placeholder="000 000-0000" maxlength="12"
-                                    required>
-                            </div>
-
-                            <!-- Menu déroulant -->
-                            <div class="mb-4">
-                                <label for="benevole-source" class="form-label mb-2 text-white">Comment avez-vous
-                                    entendu parler de nous?*</label>
-                                <select id="benevole-source" class="form-select rounded-3 border-0"
-                                    name="benevole-source" required>
-                                    <option value="" selected disabled>Choisir une option</option>
-                                    <option value="reseaux-sociaux">Réseaux sociaux</option>
-                                    <option value="bouche-a-oreille">Bouche à oreille</option>
-                                    <option value="evenement">Lors d'un événement</option>
-                                    <option value="autre">Autre</option>
-                                </select>
-                            </div>
-
-                            <!-- Section Type de bénévolat -->
-                            <div class="mb-4">
-                                <label class="form-label mb-2 text-white">Type de bénévolat recherché*</label>
-                                <div class="row g-3 text-white">
-
-                                    <div class="col-12 col-md-6">
-                                        <div class="form-check mb-2">
-                                            <input class="form-check-input me-2" type="checkbox" name="benevole-types[]"
-                                                value="Aide aux devoirs" id="benevolat1">
-                                            <label class="form-check-label" for="benevolat1">Aide aux devoirs</label>
-                                        </div>
-                                        <div class="form-check mb-2">
-                                            <input class="form-check-input me-2" type="checkbox" name="benevole-types[]"
-                                                value="Activités récréatives" id="benevolat2">
-                                            <label class="form-check-label" for="benevolat2">Activités récréatives et
-                                                sorties</label>
-                                        </div>
-                                        <div class="form-check mb-2">
-                                            <input class="form-check-input me-2" type="checkbox" name="benevole-types[]"
-                                                value="Conseil d'administration" id="benevolat3">
-                                            <label class="form-check-label" for="benevolat3">Conseil
-                                                d'administration</label>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-12 col-md-6">
-                                        <div class="form-check mb-2">
-                                            <input class="form-check-input me-2" type="checkbox" name="benevole-types[]"
-                                                value="Recherche de financement" id="benevolat4">
-                                            <label class="form-check-label" for="benevolat4">Recherche de
-                                                financement</label>
-                                        </div>
-                                        <div class="form-check mb-2">
-                                            <input class="form-check-input me-2" type="checkbox" name="benevole-types[]"
-                                                value="Entretien" id="benevolat5">
-                                            <label class="form-check-label" for="benevolat5">Entretien</label>
-                                        </div>
-                                        <div class="form-check">
-                                            <div>
-                                                <input class="form-check-input" type="checkbox" name="benevole-types[]"
-                                                    value="Autre" id="benevolat6">
-                                                <label class="form-check-label text-nowrap" for="benevolat6">Autres
-                                                    types de bénévolat :</label>
-                                            </div>
-                                            <div class="mt-2">
-                                                <label for="autres-types-benevolat" class="visually-hidden">Précision
-                                                    concernant le choix Autres types de bénévolat</label>
-                                                <input id="autres-types-benevolat" name="benevole-types-precision"
-                                                    type="text"
-                                                    class="form-control form-control-sm rounded-2 border-0 py-1 px-2 w-100"
-                                                    placeholder="Précisez">
-                                            </div>
-                                        </div>
-                                    </div>
-
+                                <!-- Champs texte standards -->
+                                <div class="mb-3">
+                                    <label for="nom" class="visually-hidden">Nom :</label>
+                                    <input id="nom" name="benevole-nom" type="text"
+                                        class="form-control rounded-3 border-0" placeholder="Nom complet*" required>
                                 </div>
-                            </div>
 
-                            <!-- Section Disponibilités -->
-                            <div class="mb-4">
-                                <label class="form-label mb-2 text-white">Veuillez cocher vos disponibilités*</label>
-                                <div class="row g-3 text-white">
+                                <div class="mb-3">
+                                    <label for="courriel" class="visually-hidden">Courriel :</label>
+                                    <input id="courriel" name="benevole-courriel" type="email"
+                                        class="form-control rounded-3 border-0" placeholder="Adresse courriel*"
+                                        required>
+                                </div>
 
-                                    <div class="col-12 col-md-6">
-                                        <div class="form-check mb-2">
-                                            <input class="form-check-input me-2" type="checkbox"
-                                                name="benevole-dispos[]" value="Lundi 16h00 à 17h00" id="disp1">
-                                            <label class="form-check-label" for="disp1">Lundi de 16h00 à 17h00</label>
-                                        </div>
-                                        <div class="form-check mb-2">
-                                            <input class="form-check-input me-2" type="checkbox"
-                                                name="benevole-dispos[]" value="Mardi 16h00 à 17h00" id="disp2">
-                                            <label class="form-check-label" for="disp2">Mardi de 16h00 à 17h00</label>
-                                        </div>
-                                        <div class="form-check mb-2">
-                                            <input class="form-check-input me-2" type="checkbox"
-                                                name="benevole-dispos[]" value="Mercredi 16h00 à 17h00" id="disp3">
-                                            <label class="form-check-label" for="disp3">Mercredi de 16h00 à
-                                                17h00</label>
-                                        </div>
-                                        <div class="form-check mb-2">
-                                            <input class="form-check-input me-2" type="checkbox"
-                                                name="benevole-dispos[]" value="Mercredi 18h00 à 19h00" id="disp4">
-                                            <label class="form-check-label" for="disp4">Mercredi de 18h00 à
-                                                19h00</label>
-                                        </div>
-                                    </div>
+                                <div class="mb-4">
+                                    <label for="telephone" class="visually-hidden">Téléphone :</label>
+                                    <input id="telephone" name="benevole-telephone" type="tel"
+                                        class="form-control rounded-3 border-0" placeholder="000 000-0000"
+                                        maxlength="12" required>
+                                </div>
 
-                                    <div class="col-12 col-md-6">
-                                        <div class="form-check mb-2">
-                                            <input class="form-check-input me-2" type="checkbox"
-                                                name="benevole-dispos[]" value="Jeudi 16h00 à 17h00" id="disp5">
-                                            <label class="form-check-label" for="disp5">Jeudi de 16h00 à 17h00</label>
-                                        </div>
-                                        <div class="form-check mb-2">
-                                            <input class="form-check-input me-2" type="checkbox"
-                                                name="benevole-dispos[]" value="Vendredi 15h00 à 18h00" id="disp6">
-                                            <label class="form-check-label" for="disp6">Vendredi de 15h00 à
-                                                18h00</label>
-                                        </div>
-                                        <div class="form-check mb-2">
-                                            <input class="form-check-input me-2" type="checkbox"
-                                                name="benevole-dispos[]" value="Samedi 9h30 à 12h00" id="disp7">
-                                            <label class="form-check-label" for="disp7">Samedi de 9h30 à 12h00</label>
-                                        </div>
-                                        <div class="form-check">
-                                            <div>
-                                                <input class="form-check-input" type="checkbox" name="benevole-dispos[]"
-                                                    value="Autre" id="disp8">
-                                                <label class="form-check-label text-nowrap" for="disp8">Autres
-                                                    disponibilités :</label>
+                                <!-- Menu déroulant -->
+                                <div class="mb-4">
+                                    <label for="benevole-source" class="form-label mb-2 text-white">Comment avez-vous
+                                        entendu parler de nous?*</label>
+                                    <select id="benevole-source" class="form-select rounded-3 border-0"
+                                        name="benevole-source" required>
+                                        <option value="" selected disabled>Choisir une option</option>
+                                        <option value="reseaux-sociaux">Réseaux sociaux</option>
+                                        <option value="bouche-a-oreille">Bouche à oreille</option>
+                                        <option value="evenement">Lors d'un événement</option>
+                                        <option value="autre">Autre</option>
+                                    </select>
+                                </div>
+
+                                <!-- Section Type de bénévolat -->
+                                <div class="mb-4">
+                                    <label class="form-label mb-2 text-white">Type de bénévolat recherché*</label>
+                                    <div class="row g-3 text-white">
+
+                                        <div class="col-12 col-md-6">
+                                            <div class="form-check mb-2">
+                                                <input class="form-check-input me-2" type="checkbox"
+                                                    name="benevole-types[]" value="Aide aux devoirs" id="benevolat1">
+                                                <label class="form-check-label" for="benevolat1">Aide aux
+                                                    devoirs</label>
                                             </div>
-                                            <div class="mt-2">
-                                                <label for="autres-dispos-precision" class="visually-hidden">Précision
-                                                    concernant vos autres disponibilités</label>
-                                                <input id="autres-dispos-precision" name="benevole-dispos-precision"
-                                                    type="text"
-                                                    class="form-control form-control-sm rounded-2 border-0 py-1 px-2 w-100"
-                                                    placeholder="Précisez">
+                                            <div class="form-check mb-2">
+                                                <input class="form-check-input me-2" type="checkbox"
+                                                    name="benevole-types[]" value="Activités récréatives"
+                                                    id="benevolat2">
+                                                <label class="form-check-label" for="benevolat2">Activités récréatives
+                                                    et
+                                                    sorties</label>
+                                            </div>
+                                            <div class="form-check mb-2">
+                                                <input class="form-check-input me-2" type="checkbox"
+                                                    name="benevole-types[]" value="Conseil d'administration"
+                                                    id="benevolat3">
+                                                <label class="form-check-label" for="benevolat3">Conseil
+                                                    d'administration</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12 col-md-6">
+                                            <div class="form-check mb-2">
+                                                <input class="form-check-input me-2" type="checkbox"
+                                                    name="benevole-types[]" value="Recherche de financement"
+                                                    id="benevolat4">
+                                                <label class="form-check-label" for="benevolat4">Recherche de
+                                                    financement</label>
+                                            </div>
+                                            <div class="form-check mb-2">
+                                                <input class="form-check-input me-2" type="checkbox"
+                                                    name="benevole-types[]" value="Entretien" id="benevolat5">
+                                                <label class="form-check-label" for="benevolat5">Entretien</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <div>
+                                                    <input class="form-check-input" type="checkbox"
+                                                        name="benevole-types[]" value="Autre" id="benevolat6">
+                                                    <label class="form-check-label text-nowrap" for="benevolat6">Autres
+                                                        types de bénévolat :</label>
+                                                </div>
+                                                <div class="mt-2">
+                                                    <label for="autres-types-benevolat"
+                                                        class="visually-hidden">Précision
+                                                        concernant le choix Autres types de bénévolat</label>
+                                                    <input id="autres-types-benevolat" name="benevole-types-precision"
+                                                        type="text"
+                                                        class="form-control form-control-sm rounded-2 border-0 py-1 px-2 w-100"
+                                                        placeholder="Précisez">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <!-- Section Disponibilités -->
+                                <div class="mb-4">
+                                    <label class="form-label mb-2 text-white">Veuillez cocher vos
+                                        disponibilités*</label>
+                                    <div class="row g-3 text-white">
+
+                                        <div class="col-12 col-md-6">
+                                            <div class="form-check mb-2">
+                                                <input class="form-check-input me-2" type="checkbox"
+                                                    name="benevole-dispos[]" value="Lundi 16h00 à 17h00" id="disp1">
+                                                <label class="form-check-label" for="disp1">Lundi de 16h00 à
+                                                    17h00</label>
+                                            </div>
+                                            <div class="form-check mb-2">
+                                                <input class="form-check-input me-2" type="checkbox"
+                                                    name="benevole-dispos[]" value="Mardi 16h00 à 17h00" id="disp2">
+                                                <label class="form-check-label" for="disp2">Mardi de 16h00 à
+                                                    17h00</label>
+                                            </div>
+                                            <div class="form-check mb-2">
+                                                <input class="form-check-input me-2" type="checkbox"
+                                                    name="benevole-dispos[]" value="Mercredi 16h00 à 17h00" id="disp3">
+                                                <label class="form-check-label" for="disp3">Mercredi de 16h00 à
+                                                    17h00</label>
+                                            </div>
+                                            <div class="form-check mb-2">
+                                                <input class="form-check-input me-2" type="checkbox"
+                                                    name="benevole-dispos[]" value="Mercredi 18h00 à 19h00" id="disp4">
+                                                <label class="form-check-label" for="disp4">Mercredi de 18h00 à
+                                                    19h00</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12 col-md-6">
+                                            <div class="form-check mb-2">
+                                                <input class="form-check-input me-2" type="checkbox"
+                                                    name="benevole-dispos[]" value="Jeudi 16h00 à 17h00" id="disp5">
+                                                <label class="form-check-label" for="disp5">Jeudi de 16h00 à
+                                                    17h00</label>
+                                            </div>
+                                            <div class="form-check mb-2">
+                                                <input class="form-check-input me-2" type="checkbox"
+                                                    name="benevole-dispos[]" value="Vendredi 15h00 à 18h00" id="disp6">
+                                                <label class="form-check-label" for="disp6">Vendredi de 15h00 à
+                                                    18h00</label>
+                                            </div>
+                                            <div class="form-check mb-2">
+                                                <input class="form-check-input me-2" type="checkbox"
+                                                    name="benevole-dispos[]" value="Samedi 9h30 à 12h00" id="disp7">
+                                                <label class="form-check-label" for="disp7">Samedi de 9h30 à
+                                                    12h00</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <div>
+                                                    <input class="form-check-input" type="checkbox"
+                                                        name="benevole-dispos[]" value="Autre" id="disp8">
+                                                    <label class="form-check-label text-nowrap" for="disp8">Autres
+                                                        disponibilités :</label>
+                                                </div>
+                                                <div class="mt-2">
+                                                    <label for="autres-dispos-precision"
+                                                        class="visually-hidden">Précision
+                                                        concernant vos autres disponibilités</label>
+                                                    <input id="autres-dispos-precision" name="benevole-dispos-precision"
+                                                        type="text"
+                                                        class="form-control form-control-sm rounded-2 border-0 py-1 px-2 w-100"
+                                                        placeholder="Précisez">
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
