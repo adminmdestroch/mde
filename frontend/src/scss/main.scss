@@ -222,15 +222,15 @@ $h6-taille: 1rem; // ~16px au lieu de 1.35rem;
 
 // LOGOS
 .logo-mde-img {
-  // Taille par défaut pour les mobiles (XS et SM) : par exemple 200px ou un pourcentage plus petit
-  width: 180px; 
-  max-width: 100%;
+  // Par défaut (écrans larges / desktop)
+  width: 100%;
+  max-width: 380px;
   height: auto;
 
-  // À partir des écrans moyens (md / 768px et plus)
-  @media (min-width: 768px) {
-    width: 100%;
-    max-width: 380px;
+  // Sur tous les mobiles (smartphones en portrait ET en paysage, en dessous de 768px)
+  @media (max-width: 991.98px) {
+    width: 160px; // Ajustez cette valeur selon la taille souhaitée sur mobile
+    max-width: 100%;
   }
 }
 

@@ -12049,14 +12049,14 @@ textarea.form-control-lg {
 }
 
 .logo-mde-img {
-  width: 180px;
-  max-width: 100%;
+  width: 100%;
+  max-width: 380px;
   height: auto;
 }
-@media (min-width: 768px) {
+@media (max-width: 991.98px) {
   .logo-mde-img {
-    width: 100%;
-    max-width: 380px;
+    width: 160px;
+    max-width: 100%;
   }
 }
 
