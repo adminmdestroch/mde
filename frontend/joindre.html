@@ -30,9 +30,10 @@
                     <div class="card shadow p-3 mb-4">
                         <div class="card-body">
                             <h2 class="h3 card-title mb-3">Écrivez-nous</h2>
-                            <div id="contact-message" class="alert d-none" role="alert"></div>
+                            <div id="contact-message" class="alert alert-danger d-none" role="alert" aria-live="polite"></div>
 
-                            <form action="/send-joindre" method="post">
+                            <form id="form-joindre" action="/api/send-joindre" method="post" aria-label="Nous joindre">
+                                <div id="joindre-feedback" class="alert d-none mb-3" role="alert" aria-live="polite"></div>
                                 <ol class="m-0 p-0">
                                     <li class="d-block mb-3">
                                         <label for="nom" class="visually-hidden">Nom complet</label>
@@ -51,7 +52,7 @@
                                     </li>
                                 </ol>
                                 <div class="text-end">
-                                    <input class="btn btn-primary" type="submit">
+                                    <button class="btn btn-primary" type="submit">Envoyer</button>
                                 </div>
                             </form>
                         </div>
@@ -64,20 +65,11 @@
     <div id="app-footer" style="display: contents"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        // Affiche le résultat de l'envoi (redirection faite par api/contact.php)
-        const params = new URLSearchParams(location.search);
-        const envoye = params.get('envoye');
-        if (envoye !== null) {
-            const zone = document.getElementById('contact-message');
-            const succes = envoye === '1';
-            zone.classList.remove('d-none');
-            zone.classList.add(succes ? 'alert-success' : 'alert-danger');
-            zone.textContent = succes
-                ? 'Merci, votre message a bien été envoyé !'
-                : "Une erreur est survenue. Vérifie les champs et réessaie.";
-            history.replaceState(null, '', location.pathname);
-        }
+
+    <script type="module">
+        import { activerEnvoiFormulaire } from '/src/formulaires.js';
+
+        activerEnvoiFormulaire('form-joindre', 'joindre-feedback', true);
     </script>
 </body>
 

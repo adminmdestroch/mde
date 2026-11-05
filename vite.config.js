@@ -8,7 +8,6 @@ import handlebars from 'vite-plugin-handlebars'
 
 const requireCjs = createRequire(resolve(__dirname, 'package.json'))
 
-// Exécute backend/api/*.js en dev, comme une fonction serverless
 function apiDev() {
   return {
     name: 'api-dev',
@@ -17,7 +16,7 @@ function apiDev() {
         const name = req.url.split('?')[0].replace(/^\/+|\/+$/g, '')
         if (!/^[\w-]+$/.test(name) || name.startsWith('_')) return next()
 
-        const file = resolve(__dirname, 'backend/api', name + '.js')
+        const file = resolve(__dirname, 'api', name + '.js')
         if (!existsSync(file)) return next()
 
         // Helpers façon Express/Vercel
