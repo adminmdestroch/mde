@@ -12048,6 +12048,18 @@ textarea.form-control-lg {
   --icone: url('../assets/img/icones/don-mensuel.svg');
 }
 
+.logo-mde-img {
+  width: 180px;
+  max-width: 100%;
+  height: auto;
+}
+@media (min-width: 768px) {
+  .logo-mde-img {
+    width: 100%;
+    max-width: 380px;
+  }
+}
+
 .logo-donateur {
   --echelle: 1.25;
   width: calc(var(--w) * var(--echelle));

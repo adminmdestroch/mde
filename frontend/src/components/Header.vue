@@ -28,8 +28,8 @@ function isActive(href) {
   <div class="bg-white py-3">
     <div class="container-fluid p-4">
       <a href="/">
-        <!-- w-50 sur mobile (petit), w-lg-100 limité à 380px maximum sur écran large -->
-        <img src="/assets/img/logo.png" alt="Logo de la maison des enfants" class="w-50 w-lg-100" style="max-width: 380px; height: auto;" />
+        <!-- w-lg-100 conservé pour les grands écrans -->
+        <img src="/assets/img/logo.png" alt="Logo de la maison des enfants" class="w-lg-100 logo-mde-img" />
       </a>
     </div>
   </div>

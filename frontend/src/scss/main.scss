@@ -221,6 +221,19 @@ $h6-taille: 1rem; // ~16px au lieu de 1.35rem;
 
 
 // LOGOS
+.logo-mde-img {
+  // Taille par défaut pour les mobiles (XS et SM) : par exemple 200px ou un pourcentage plus petit
+  width: 180px; 
+  max-width: 100%;
+  height: auto;
+
+  // À partir des écrans moyens (md / 768px et plus)
+  @media (min-width: 768px) {
+    width: 100%;
+    max-width: 380px;
+  }
+}
+
 .logo-donateur {
   --echelle: 1.25; // 1 = taille de la maquette; essaie 1.2 ou 1.3 si c'est trop petit
   width: calc(var(--w) * var(--echelle));
