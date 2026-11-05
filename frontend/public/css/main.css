@@ -12071,7 +12071,7 @@ main {
   color: black !important;
 }
 
-#section-donateurs .card, #section-donateurs .cadre-soleil {
+#section-donateurs .contenu {
   max-width: 900px;
   margin: 0 auto;
 }

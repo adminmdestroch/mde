@@ -33,7 +33,6 @@
                             <div id="contact-message" class="alert alert-danger d-none" role="alert" aria-live="polite"></div>
 
                             <form id="form-joindre" action="/api/send-joindre" method="post" aria-label="Nous joindre">
-                                <div id="joindre-feedback" class="alert d-none mb-3" role="alert" aria-live="polite"></div>
                                 <ol class="m-0 p-0">
                                     <li class="d-block mb-3">
                                         <label for="nom" class="visually-hidden">Nom complet</label>
@@ -51,6 +50,8 @@
                                             placeholder="Votre message"></textarea>
                                     </li>
                                 </ol>
+                                <div id="joindre-feedback" class="alert alert-danger d-none mb-3" role="alert" aria-live="polite"></div>
+
                                 <div class="text-end">
                                     <button class="btn btn-primary" type="submit">Envoyer</button>
                                 </div>
@@ -71,6 +72,7 @@
 
         activerEnvoiFormulaire('form-joindre', 'joindre-feedback', true);
     </script>
+    
 </body>
 
 </html>

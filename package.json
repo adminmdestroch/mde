@@ -18,10 +18,10 @@
   },
   "dependencies": {
     "bootstrap": "^5.3.8",
-    "eslint": "^10.8.0",
+    "eslint": "^9.39.5",
     "googleapis": "^150.0.1",
-    "multer": "^2.0.2",	
-    "nodemon": "^3.1.14",
+    "multer": "^2.0.2",
+    "nodemon": "^3.1.11",
     "sass": "^1.102.0",
     "vue": "^3.5.40"
   },
@@ -29,5 +29,9 @@
     "@vitejs/plugin-vue": "^5.2.1",
     "vite": "^6.0.7",
     "vite-plugin-handlebars": "^2.0.3"
+  },
+  "allowScripts": {
+    "esbuild@0.25.12": true,
+    "@parcel/watcher@2.6.0": true
   }
 }
